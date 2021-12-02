@@ -75,7 +75,7 @@ const BookOptions = () => {
                             newBook = {
                               currentChapter: parseInt(target.dataset.chapter),
                               name: book.passage,
-                              bookIndex: index + 1,
+                              bookIndex: index,
                               chaptersCount: book.chapters.length,
                             };
                             return true;

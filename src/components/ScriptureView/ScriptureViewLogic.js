@@ -34,7 +34,6 @@ const ScriptureViewLogic = (currentViewingPassageWrapper) => {
     if (!target.classList.contains('view-direction')) return false;
 
     setIsPassagePending(true);
-    if (isPassagePending) return; // used to prevent the prev button from moving to a different book before the pending ends
 
     if (target.classList.contains('next')) {
       if (bookIndex === bookLen - 1 && currentChapter === chaptersCount) {
@@ -64,7 +63,6 @@ const ScriptureViewLogic = (currentViewingPassageWrapper) => {
         chaptersCount: books[bookIndex + 1].chapters.length,
       };
     }
-
     setDisplayedBookData(newBook);
   };
 
@@ -72,18 +70,17 @@ const ScriptureViewLogic = (currentViewingPassageWrapper) => {
     let { bookIndex } = displayedBookData;
     let newBook = { ...displayedBookData };
 
-    if (bookIndex === 0)
-      if (currentChapter > 1) {
-        newBook = { ...newBook, currentChapter: currentChapter - 1 };
-      } else if (bookIndex > 0) {
-        newBook = {
-          ...newBook,
-          bookIndex: bookIndex - 1,
-          name: books[bookIndex - 1].passage,
-          currentChapter: books[bookIndex - 1].chapters.length,
-          chaptersCount: books[bookIndex - 1].chapters.length,
-        };
-      }
+    if (currentChapter > 1) {
+      newBook = { ...newBook, currentChapter: currentChapter - 1 };
+    } else if (bookIndex > 0) {
+      newBook = {
+        ...newBook,
+        bookIndex: bookIndex - 1,
+        name: books[bookIndex - 1].passage,
+        currentChapter: books[bookIndex - 1].chapters.length,
+        chaptersCount: books[bookIndex - 1].chapters.length,
+      };
+    }
     setDisplayedBookData(newBook);
   };
 
