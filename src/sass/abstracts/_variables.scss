@@ -1,0 +1,33 @@
+:root {
+  // colors
+  --rosy-brown: hsl(0, 25%, 80%);
+  --rosy-brown--darker: hsl(0, 25%, 70%);
+  --white: hsl(231, 20%, 100%);
+  --black: hsl(0, 0%, 10%);
+
+  // shadow 3d color
+  --shadow-top-color: hsl(0, 25%, 74%);
+  --shadow-bottom-color: hsl(0, 25%, 87%);
+
+  // font
+  --main-color: var(--black);
+  --secondary-color: var(--white);
+  --main-bg: var(--rosy-brown);
+  --main-bg--darker: var(--rosy-brown--darker);
+
+  --primary-font--light: WorkSans-Light;
+  --primary-font--medium: WorkSans-Medium;
+  --primary-font--bold: WorkSans-Bold;
+  --secondary-font--reg: HachiMaruPop-Regular;
+
+  // font-size
+  --font-size--default: 1rem;
+  --font-size--medium: 2rem;
+  --font-size--large: 5rem;
+
+  // structure
+  --header-height: 58.5px;
+}
+
+.default-theme {
+}

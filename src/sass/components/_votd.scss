@@ -1,0 +1,47 @@
+.votd {
+  &__control {
+    padding: 5px 10px;
+  }
+  &__content {
+    @include set-position(
+      absolute,
+      $left: 0%,
+      $width: 100%,
+      $top: 100%,
+      $height: calc(100vh - var(--header-height))
+    );
+    border-radius: 0 0 0 5px;
+    padding: 0px var(--font-size--medium) 10px;
+    background-color: var(--main-bg);
+    box-shadow: 2px 2px 4px var(--shadow-top-color),
+      -2px -2px 4px var(--shadow-bottom-color);
+    transition: height 0.5s ease-in-out;
+    &.no-height {
+      @include set-height(0);
+      padding-bottom: 0;
+    }
+  }
+  &__header {
+    @include set-position(sticky, $top: 0);
+    text-align: center;
+    padding-top: 10px;
+    font-family: var(--secondary-font--reg);
+    background-color: inherit;
+  }
+  &__textlist {
+    font-size: 1.2rem;
+    line-height: 150%;
+    font-variant: normal;
+  }
+  &__text {
+    list-style: circle;
+    margin: 20px;
+  }
+  &__passage {
+    @include flex(flex, $gap: 5px);
+    font-weight: bold;
+  }
+  &__passage-msg {
+    font-size: 1rem;
+  }
+}

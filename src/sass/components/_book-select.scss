@@ -1,0 +1,19 @@
+.book-select {
+  @include flex(flex);
+  @include set-width(100%);
+  &__controls {
+    @include flex(flex, $gap: 20px);
+  }
+  &__name-control,
+  &__chapter-control {
+    padding: 5px 15px;
+    font-size: 1.4rem;
+    font-variant: small-caps;
+  }
+
+  &__name-control {
+    &::first-letter {
+      font-size: 1.6rem;
+    }
+  }
+}

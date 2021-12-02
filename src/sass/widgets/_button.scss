@@ -1,0 +1,13 @@
+.btn {
+  @include set-width(max-content);
+  @include area-padding;
+  background-color: inherit;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px var(--shadow-top-color),
+    -2px -2px 4px var(--shadow-bottom-color);
+  &--active,
+  &:active {
+    box-shadow: inset 2px 2px 4px var(--shadow-top-color),
+      inset -2px -2px 4px var(--shadow-bottom-color);
+  }
+}

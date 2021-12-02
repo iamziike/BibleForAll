@@ -1,0 +1,55 @@
+.no-visible-scrollbar {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    @include set-display(none !important);
+  }
+}
+
+.no-display {
+  @include set-display(none !important);
+}
+
+.pending {
+  @include set-position(fixed, $left: 0, $top: 0, $width: 100%, $height: 100%);
+  pointer-events: none;
+  z-index: 10;
+  background-color: hsla(0, 25%, 80%, 0.5);
+
+  &::before {
+    --circle-radius: 100px;
+    box-shadow: 2px 2px 4px var(--shadow-top-color),
+      -2px -2px 4px var(--shadow-bottom-color);
+    animation: rotate 1s linear infinite;
+  }
+  &::after {
+    --circle-radius: 60px;
+    box-shadow: inset 2px 2px 4px var(--shadow-top-color),
+      inset -2px -2px 4px var(--shadow-bottom-color);
+    animation: rotate 0.7s linear infinite;
+  }
+  &::before,
+  &::after {
+    content: '';
+    @include set-position(
+      absolute,
+      $left: calc(50% - (var(--circle-radius) / 2)),
+      $top: calc(50% - (var(--circle-radius) / 2)),
+      $width: var(--circle-radius),
+      $height: var(--circle-radius)
+    );
+    background-color: var(--main-bg);
+    border-radius: 50%;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,0 +1,114 @@
+.others {
+  &-options {
+    @include set-position(
+      absolute,
+      $left: 0,
+      $width: 100%,
+      $height: calc(100vh - var(--header-height)),
+      $top: var(--header-height)
+    );
+    @include flex(flex, $gap: 2px);
+    padding: 10px 2px 0;
+    box-shadow: inset 2px 2px 4px hsl(0, 25%, 74%),
+      inset -2px -2px 4px hsl(0, 25%, 85%);
+  }
+  &-chapter-options,
+  &-name-options {
+    @include set-width(100%);
+    text-align: center;
+    padding: 0 5px;
+
+    & > * {
+      padding: 10px 5px;
+      margin: 2px auto 5px;
+      font-size: 1.5rem;
+    }
+  }
+  &-chapter-options {
+    @include flex(flex, $gap: 10px, $justify: center);
+    flex-wrap: wrap;
+  }
+}
+
+// .name-option {
+//   @include set-width(100%);
+//   margin: 2px auto 10px;
+// }
+
+// .chapter-option {
+//   padding: 5px 15px;
+// }
+
+.book-select {
+  &__options {
+    @include set-position(
+      absolute,
+      $left: 0,
+      $width: 100%,
+      $height: calc(100vh - var(--header-height)),
+      $top: var(--header-height)
+    );
+    @include flex(flex, $gap: 2px);
+    padding: 10px 2px 0;
+    box-shadow: inset 2px 2px 4px var(--shadow-top-color),
+      inset -2px -2px 4px var(--shadow-bottom-color);
+    background-color: var(--main-bg);
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  &__chapter-options,
+  &__name-options {
+    @include set-width-height(100%);
+    text-align: center;
+    padding: 5px;
+  }
+  &__chapter-options {
+    @include flex(flex, $gap: 10px, $justify: center, $height: 100%);
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 10px;
+  }
+  &__name-option {
+    @include set-position(relative);
+    @include set-width(100%);
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    animation: entry 1s linear both;
+
+    &::after {
+      content: '';
+      @include set-position(
+        absolute,
+        $left: 5%,
+        $width: 90%,
+        $height: 80%,
+        $top: 10%
+      );
+      box-shadow: 2px 2px 4px var(--shadow-top-color),
+        -2px -2px 4px var(--shadow-bottom-color);
+    }
+    &.btn--active {
+      &::after {
+        box-shadow: inset 2px 2px 4px var(--shadow-top-color),
+          inset -2px -2px 4px var(--shadow-bottom-color);
+      }
+      font-weight: bolder;
+    }
+  }
+  &__chapter-option {
+    padding: 5px 15px;
+    font-size: 1.2rem;
+    animation: entry 1s linear both;
+  }
+
+  @keyframes entry {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

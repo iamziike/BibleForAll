@@ -1,0 +1,129 @@
+@mixin flex(
+  $type: flex,
+  $gap: null,
+  $justify: null,
+  $align: null,
+  $width: null,
+  $height: null
+) {
+  display: $type;
+  @if ($gap) {
+    gap: $gap;
+  }
+  @if ($justify) {
+    @include justify($justify);
+  }
+  @if ($align) {
+    @include align($align);
+  }
+  @if ($width) {
+    @include set-width($width);
+  }
+  @if ($height) {
+    @include set-height($height);
+  }
+}
+
+@mixin set-display($type, $width: null, $height: null) {
+  display: $type;
+  @if ($width) {
+    @include set-width($width);
+  }
+  @if ($height) {
+    @include set-height($height);
+  }
+}
+
+@mixin set-position(
+  $type,
+  $left: null,
+  $right: null,
+  $top: null,
+  $bottom: null,
+  $width: null,
+  $height: null
+) {
+  position: $type;
+  @if ($width) {
+    @include set-width($width);
+  }
+  @if ($height) {
+    @include set-height($height);
+  }
+  @if ($left) {
+    @include move-left($left);
+  }
+  @if ($right) {
+    @include move-right($right);
+  }
+  @if ($top) {
+    @include move-top($top);
+  }
+  @if ($bottom) {
+    @include move-bottom($bottom);
+  }
+}
+
+@mixin set-width-height($width: null, $height: null) {
+  @if ($width) {
+    @include set-width($width);
+  }
+  @if ($height) {
+    @include set-height($height);
+  }
+}
+
+@mixin set-width($width) {
+  width: $width;
+}
+
+@mixin set-height($height) {
+  height: $height;
+}
+
+@mixin move-left($left) {
+  left: $left;
+}
+
+@mixin move-right($right) {
+  right: $right;
+}
+
+@mixin move-top($top) {
+  top: $top;
+}
+
+@mixin move-bottom($bottom) {
+  bottom: $bottom;
+}
+
+@mixin area-padding {
+  padding: 1% 5%;
+}
+
+@mixin center-element {
+  margin: 0 auto;
+}
+
+@mixin justify($justify) {
+  justify-content: $justify;
+}
+
+@mixin align($align) {
+  align-items: $align;
+}
+
+@mixin modal-screen($bg) {
+  background-color: $bg;
+}
+
+@mixin flex-items-center {
+  @include flex(
+    flex,
+    $gap: 20px,
+    $align: center,
+    $justify: center,
+    $height: 100%,
+    $width: 100%
+  );
+}

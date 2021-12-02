@@ -1,0 +1,35 @@
+.scripture-view {
+  --this-height: calc(100vh - var(--header-height));
+  @include flex(flex, $width: 70vw, $height: calc(var(--this-height) - 20px));
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+.view-direction {
+  @include set-position(fixed, $height: max-content, $top: 40%);
+  padding: 5px 15px;
+  rotate: 90deg;
+  &.prev {
+    @include move-left(0);
+  }
+  &.next {
+    @include move-right(0);
+  }
+}
+
+.viewing-passage {
+  @include set-position(relative);
+  @include area-padding;
+  @include set-width(100%);
+  cursor: default;
+  word-spacing: 100%;
+  line-height: 190%;
+  & > p:first-child {
+    @include set-display(none);
+  }
+
+  &:hover {
+    box-shadow: inset 2px 2px 4px var(--shadow-top-color),
+      inset -2px -2px 4px var(--shadow-bottom-color);
+  }
+}

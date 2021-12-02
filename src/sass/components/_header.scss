@@ -1,0 +1,25 @@
+.header {
+  @include flex(
+    flex,
+    $width: 70%,
+    $justify: space-between,
+    $align: center,
+    $height: var(--header-height)
+  );
+  @include area-padding;
+  @include set-position(relative);
+  z-index: 10;
+  margin-left: auto;
+  box-shadow: 2px 2px 4px var(--shadow-top-color),
+    -2px -2px 4px var(--shadow-bottom-color);
+
+  & > div:nth-child(2) {
+    @include flex(flex, $gap: 20px, $width: 100%, $justify: flex-end);
+    & > * {
+      font-variant: small-caps;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    @include set-width(100%);
+  }
+}
