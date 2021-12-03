@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/BibleForAll/static/css/main.e5330ae1.chunk.css",
-    "main.js": "/BibleForAll/static/js/main.72912371.chunk.js",
-    "main.js.map": "/BibleForAll/static/js/main.72912371.chunk.js.map",
+    "main.css": "/BibleForAll/static/css/main.0d696ad0.chunk.css",
+    "main.js": "/BibleForAll/static/js/main.bf3537f9.chunk.js",
+    "main.js.map": "/BibleForAll/static/js/main.bf3537f9.chunk.js.map",
     "runtime-main.js": "/BibleForAll/static/js/runtime-main.656c5c75.js",
     "runtime-main.js.map": "/BibleForAll/static/js/runtime-main.656c5c75.js.map",
-    "static/js/2.cd3c6198.chunk.js": "/BibleForAll/static/js/2.cd3c6198.chunk.js",
-    "static/js/2.cd3c6198.chunk.js.map": "/BibleForAll/static/js/2.cd3c6198.chunk.js.map",
+    "static/js/2.2417768e.chunk.js": "/BibleForAll/static/js/2.2417768e.chunk.js",
+    "static/js/2.2417768e.chunk.js.map": "/BibleForAll/static/js/2.2417768e.chunk.js.map",
     "index.html": "/BibleForAll/index.html",
-    "static/css/main.e5330ae1.chunk.css.map": "/BibleForAll/static/css/main.e5330ae1.chunk.css.map",
-    "static/js/2.cd3c6198.chunk.js.LICENSE.txt": "/BibleForAll/static/js/2.cd3c6198.chunk.js.LICENSE.txt",
+    "static/css/main.0d696ad0.chunk.css.map": "/BibleForAll/static/css/main.0d696ad0.chunk.css.map",
+    "static/js/2.2417768e.chunk.js.LICENSE.txt": "/BibleForAll/static/js/2.2417768e.chunk.js.LICENSE.txt",
     "static/media/App.css": "/BibleForAll/static/media/WorkSans-Medium.f292ced0.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.656c5c75.js",
-    "static/js/2.cd3c6198.chunk.js",
-    "static/css/main.e5330ae1.chunk.css",
-    "static/js/main.72912371.chunk.js"
+    "static/js/2.2417768e.chunk.js",
+    "static/css/main.0d696ad0.chunk.css",
+    "static/js/main.bf3537f9.chunk.js"
   ]
 }
