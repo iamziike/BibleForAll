@@ -15,11 +15,7 @@
     background-color: var(--main-bg);
     box-shadow: 2px 2px 4px var(--shadow-top-color),
       -2px -2px 4px var(--shadow-bottom-color);
-    transition: height 0.5s ease-in-out;
-    &.no-height {
-      @include set-height(0);
-      padding-bottom: 0;
-    }
+    padding-bottom: 0;
   }
   &__header {
     @include set-position(sticky, $top: 0);

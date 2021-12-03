@@ -8,13 +8,8 @@ const ScriptureViewLogic = (currentViewingPassageWrapper) => {
     PassagePendingContext,
   );
 
-  const {
-    bookList,
-    displayedBookData,
-    setDisplayedBookData,
-    API_KEY,
-    bibleId,
-  } = useContext(BookDataContext);
+  const { books, displayedBookData, setDisplayedBookData, API_KEY, bibleId } =
+    useContext(BookDataContext);
 
   const {
     name: currentBookName,
@@ -28,7 +23,6 @@ const ScriptureViewLogic = (currentViewingPassageWrapper) => {
 
   const handlePassageChange = (event) => {
     let { bookIndex } = displayedBookData;
-    let bookLen = bookList.length;
     const target = event.target;
 
     if (!target.classList.contains('view-direction')) return false;
@@ -36,15 +30,15 @@ const ScriptureViewLogic = (currentViewingPassageWrapper) => {
     setIsPassagePending(true);
 
     if (target.classList.contains('next')) {
-      if (bookIndex === bookLen - 1 && currentChapter === chaptersCount) {
+      if (bookIndex === books.length - 1 && currentChapter === chaptersCount) {
         return setIsPassagePending(false);
       }
-      nextPassage(displayedBookData, bookList.books);
+      nextPassage(displayedBookData, books);
     } else if (target.classList.contains('prev')) {
       if (bookIndex === 0 && currentChapter === 1) {
         return setIsPassagePending(false);
       }
-      prevPassage(displayedBookData, bookList.books);
+      prevPassage(displayedBookData, books);
     }
   };
 

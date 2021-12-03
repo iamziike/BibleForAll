@@ -10,10 +10,13 @@
     font-size: 1.4rem;
     font-variant: small-caps;
   }
-
   &__name-control {
     &::first-letter {
       font-size: 1.6rem;
     }
+  }
+  &__chapter-control {
+    box-shadow: 2px 2px 4px var(--shadow-top-color),
+      -2px -2px 4px var(--shadow-bottom-color);
   }
 }

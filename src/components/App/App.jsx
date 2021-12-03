@@ -1,27 +1,21 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createContext, useState } from 'react';
 import AppLogic from './AppLogic';
 import Header from '../Header/Header';
 import ScriptureView from '../ScriptureView/ScriptureView';
 import '../../css/App.css';
-import NotFound from '../../routes/NotFound';
 
 export const BookDataContext = createContext();
 export const PassagePendingContext = createContext();
+export const SelectedTestContext = createContext();
 
 const App = () => {
   const [isPassagePending, setIsPassagePending] = useState(true);
-  const {
-    displayedBookData,
-    setDisplayedBookData,
-    bookList,
-    API_KEY,
-    bibleId,
-  } = AppLogic();
+  const { displayedBookData, setDisplayedBookData, books, API_KEY, bibleId } =
+    AppLogic();
 
   return (
     <>
-      {displayedBookData && bookList && (
+      {displayedBookData && books && (
         <PassagePendingContext.Provider
           value={{ isPassagePending, setIsPassagePending }}
         >
@@ -29,26 +23,17 @@ const App = () => {
             value={{
               displayedBookData,
               setDisplayedBookData,
-              bookList,
+              books,
               API_KEY,
               bibleId,
             }}
           >
-            <Router>
-              <Switch>
-                <Route exact path='/'>
-                  <Header />
-                  {isPassagePending && <div className='pending'></div>}
-                  <ScriptureView />
-                </Route>
-                <Route path='/*'>
-                  <NotFound />
-                </Route>
-              </Switch>
-            </Router>
+            <Header />
+            <ScriptureView />
           </BookDataContext.Provider>
         </PassagePendingContext.Provider>
       )}
+      {isPassagePending && <div className='pending'></div>}
     </>
   );
 };

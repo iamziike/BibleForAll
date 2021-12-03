@@ -1,23 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import { BookDataContext, PassagePendingContext } from '../../App/App';
-import { PassageClickContext } from '../BookSelect';
+import { OptionClickContext } from '../../Header/Header';
 
 const BookOptions = () => {
-  const {
-    isSelectNameClicked,
-    setIsSelectNameClicked,
-    isSelectChapterClicked,
-    setIsSelectChapterClicked,
-  } = useContext(PassageClickContext);
-
   function* getSelectOptionChapters(range) {
     for (let current = 1; current <= range; current++) yield current;
   }
 
+  const { isShowOptionsClicked, setIsShowOptionsClicked } =
+    useContext(OptionClickContext);
   const { setIsPassagePending } = useContext(PassagePendingContext);
-  const { bookList, displayedBookData, setDisplayedBookData } =
+  const { books, displayedBookData, setDisplayedBookData } =
     useContext(BookDataContext);
-  const { books } = bookList;
   const [selectBookOption, setSelectBookOption] = useState();
 
   useEffect(() => {
@@ -27,11 +21,9 @@ const BookOptions = () => {
     });
   }, [displayedBookData]);
 
-  const isAnyControlClicked = isSelectNameClicked || isSelectChapterClicked;
-
   return (
     <>
-      {isAnyControlClicked && (
+      {isShowOptionsClicked && (
         <div className='book-select__options'>
           <div className='book-select__name-options no-visible-scrollbar'>
             {books?.map((book, index) => {
@@ -50,7 +42,6 @@ const BookOptions = () => {
                         name: target.dataset.name,
                         chaptersCount: target.dataset.chapterCount,
                       });
-                    setIsSelectChapterClicked(true);
                   }}
                 >
                   {book.passage}
@@ -59,39 +50,37 @@ const BookOptions = () => {
             })}
           </div>
           <div className='book-select__chapter-options no-visible-scrollbar'>
-            {isSelectChapterClicked &&
-              [...getSelectOptionChapters(selectBookOption.chaptersCount)].map(
-                (chapter) => {
-                  return (
-                    <div
-                      className='btn book-select__chapter-option'
-                      key={chapter}
-                      data-chapter={chapter}
-                      onClick={(event) => {
-                        let target = event.target;
-                        let newBook = {};
-                        bookList.books.forEach((book, index) => {
-                          if (book.passage === selectBookOption.name) {
-                            newBook = {
-                              currentChapter: parseInt(target.dataset.chapter),
-                              name: book.passage,
-                              bookIndex: index,
-                              chaptersCount: book.chapters.length,
-                            };
-                            return true;
-                          }
-                        });
-                        setDisplayedBookData(newBook);
-                        setIsPassagePending(true);
-                        setIsSelectNameClicked(false);
-                        setIsSelectChapterClicked(false);
-                      }}
-                    >
-                      {chapter}
-                    </div>
-                  );
-                },
-              )}
+            {[...getSelectOptionChapters(selectBookOption.chaptersCount)].map(
+              (chapter) => {
+                return (
+                  <div
+                    className='btn book-select__chapter-option'
+                    key={chapter}
+                    data-chapter={chapter}
+                    onClick={(event) => {
+                      let target = event.target;
+                      let newBook = {};
+                      books.forEach((book, index) => {
+                        if (book.passage === selectBookOption.name) {
+                          newBook = {
+                            currentChapter: parseInt(target.dataset.chapter),
+                            name: book.passage,
+                            bookIndex: index,
+                            chaptersCount: book.chapters.length,
+                          };
+                          return true;
+                        }
+                      });
+                      setDisplayedBookData(newBook);
+                      setIsPassagePending(true);
+                      setIsShowOptionsClicked(false);
+                    }}
+                  >
+                    {chapter}
+                  </div>
+                );
+              },
+            )}
           </div>
         </div>
       )}

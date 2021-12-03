@@ -8,7 +8,7 @@
 .view-direction {
   @include set-position(fixed, $height: max-content, $top: 40%);
   padding: 5px 15px;
-  rotate: 90deg;
+  transform: rotate(90deg);
   &.prev {
     @include move-left(0);
   }

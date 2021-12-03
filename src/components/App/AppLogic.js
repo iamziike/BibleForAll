@@ -27,7 +27,7 @@ const AppLogic = () => {
   return {
     displayedBookData,
     setDisplayedBookData,
-    bookList,
+    books: bookList?.books,
     API_KEY,
     bibleId,
   };
