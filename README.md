@@ -1,2 +1,2 @@
 ## Bible on the Web
-Check it [out](https://iamziike.github.io/BibleForAll)
+[Preview it](https://iamziike.github.io/BibleForAll)
